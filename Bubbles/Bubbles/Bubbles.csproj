@@ -114,10 +114,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\Frame.cs" />
     <Compile Include="src\Program.cs" />
     <Compile Include="src\Game1.cs" />
+    <Compile Include="src\TextLine.cs" />
     <Compile Include="src\Tools.cs" />
     <Compile Include="src\Tooltip.cs" />
+    <Compile Include="src\Tooltip2.cs" />
     <Compile Include="src\Widget.cs" />
   </ItemGroup>
   <ItemGroup>

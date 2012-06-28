@@ -28,6 +28,8 @@ namespace Bubbles
             }
 
             Message = message;
+            Show = true;
+            drawable = true;
         }
 
         public string Message
@@ -35,7 +37,7 @@ namespace Bubbles
             get { return message; }
 
             //if the message is changed we need to recalculate the new neccesary size
-            //for the widget redraw it
+            //for the widget and recache it
             set 
             { 
                 message = value; dirty = true;
@@ -49,17 +51,21 @@ namespace Bubbles
         {
             
             //DrawRectangle(destination, Color.Black);
-            DrawLine(2, Color.Yellow, new Vector2(0, 0), new Vector2(destination.Width, 0));
-            DrawLine(2, Color.Yellow, new Vector2(destination.Width, 0), new Vector2(destination.Width, destination.Height));
-            DrawLine(2, Color.Yellow, new Vector2(destination.Width,destination.Height), new Vector2(0, destination.Height));
-            DrawLine(2, Color.Yellow, new Vector2(0, destination.Height), new Vector2(0, 0));
-            Batch.DrawString(font, message, new Vector2(5,3), Color.Red);
-            Console.WriteLine("[Tooltip]: rendering \"{2}\" to texture: {0}x{1}",destination.Width,destination.Height,message);
+            DrawLine(1, Color.Yellow, new Vector2(0, 0), new Vector2(destination.Width, 0));
+            DrawLine(1, Color.Yellow, new Vector2(destination.Width, 0), new Vector2(destination.Width, destination.Height));
+            DrawLine(1, Color.Yellow, new Vector2(destination.Width,destination.Height), new Vector2(0, destination.Height));
+            DrawLine(1, Color.Yellow, new Vector2(0, destination.Height), new Vector2(0, 0));
+            Batch.DrawString(font, message, new Vector2(5,3), Color.White);
+           // Console.WriteLine("[Tooltip]: rendering \"{2}\" to texture: {0}x{1}",destination.Width,destination.Height,message);
         }
 
         override protected void Tick(GameTime time)
         {
            // Console.WriteLine("tick from tooltip");
+        }
+
+        override protected void OnHover()
+        {
         }
     }
 }

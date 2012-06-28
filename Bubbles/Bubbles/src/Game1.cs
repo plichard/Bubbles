@@ -81,10 +81,14 @@ namespace Bubbles
 
             GraphicsDevice.SetRenderTarget(null);
 
-            ttip1 = new Tooltip("Hello from tooltip 1", new Vector2(100, 50));
-            new Tooltip("I am the child of ttip1 =)", new Vector2(100, 100), ttip1);
-            
-            // TODO: use this.Content to load your game content here
+            ttip1 = new Tooltip("tooltip", new Vector2(100, 50));
+           // Tooltip child = new Tooltip("tooltip2", new Vector2(100, 100), ttip1);
+            //Tooltip child2 = new Tooltip("tooltip3", new Vector2(100, 150), child);
+            Tooltip2 test = new Tooltip2("omfg this line can be highlighted O_O", new Vector2(100, 200));
+            TextLine linetest = new TextLine("omfg another cool line");
+            linetest.Position = new Vector2(100, 150);
+            ttip1.AddChild(linetest);
+            ttip1.AddChild(test);
         }
 
         /// <summary>
@@ -117,7 +121,7 @@ namespace Bubbles
                 wasPressed = false;
             }
             // TODO: Add your update logic here
-
+            Widget.MousePick(Mouse.GetState().X, Mouse.GetState().Y);
             ttip1.Update(gameTime);
 
             base.Update(gameTime);
@@ -130,32 +134,7 @@ namespace Bubbles
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(new Color(0,0,0.1f));
-            
-            /*
-            spriteBatch.Begin();
-            //spriteBatch.DrawString(mainfont, message, Vector2.Zero, Color.White);
-            spriteBatch.Draw(renderTarget, new Rectangle(0, 0, 8*message.Length,mainfont.LineSpacing), Color.White);
-            spriteBatch.Draw(ttip1.Texture, ttip1.Destination, Color.White);
-            // Tools.DrawLine(4, Color.Wheat, new Vector2(0, 0), new Vector2(300, 300));
-
-            
-            //using (System.IO.Stream stream = System.IO.File.OpenWrite("string.png"))
-            //{
-            //    renderTarget.SaveAsPng(stream, 8 * message.Length, mainfont.LineSpacing);
-            //}
-            
-            int i = 0;
-            foreach (char c in message)
-            {
-                spriteBatch.DrawString(mainfont, c.ToString(), new Vector2(8 * i, mainfont.LineSpacing), new Color((float)i / message.Length, 1 - (float)i / message.Length, 0));
-                i++;
-            }
-            spriteBatch.End();*/
-
             ttip1.Draw();
-
-            // TODO: Add your drawing code here
-
             base.Draw(gameTime);
         }
     }
